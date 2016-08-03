@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://sisam.cptec.inpe.br/sisam_webservice/services/MesAnoWebService?wsdl" uri="wsdl/sisam.cptec.inpe.br/sisam_webservice/services/MesAnoWebService.wsdl"/>
+    <system systemId="http://sisam.cptec.inpe.br/sisam_webservice/services/CidadesWebService?wsdl" uri="wsdl/sisam.cptec.inpe.br/sisam_webservice/services/CidadesWebService.wsdl"/>
+    <system systemId="http://sisam.cptec.inpe.br/sisam_webservice/services/TabulacaoWebService?wsdl" uri="wsdl/sisam.cptec.inpe.br/sisam_webservice/services/TabulacaoWebService.wsdl"/>
+    <system systemId="http://sisam.cptec.inpe.br/sisam_webservice/services/VariaveisWebService?wsdl" uri="wsdl/sisam.cptec.inpe.br/sisam_webservice/services/VariaveisWebService.wsdl"/>
+</catalog>

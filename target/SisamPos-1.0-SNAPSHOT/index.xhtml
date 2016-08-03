@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+
+        <h2>Consulta de informações ambientais</h2>
+        <hr />
+        <h:form>
+            <h3>Pesquisar todos os estados por ano</h3> 
+            <h:selectOneMenu value="#{gerenciadorEstatisticas.ano}">
+                <f:selectItems value="#{gerenciadorEstatisticas.listarAnos()}" var="ano" itemValue="#{ano}" itemLabel="#{ano}" />			
+            </h:selectOneMenu>	
+            <h:commandButton value="Pesquisar" 
+                             action="#{gerenciadorEstatisticas.consultarFocosPorAno()}" />
+        </h:form> 		
+        
+        <h:form>
+            <h3>Pesquisar por estado</h3> 
+            <h:selectOneMenu value="#{gerenciadorEstatisticas.ano}">
+                <f:selectItems value="#{gerenciadorEstatisticas.listarSiglas()}" var="estado" itemValue="#{estado}" itemLabel="#{estado}" />			
+            </h:selectOneMenu>	
+            <h:commandButton value="Pesquisar" 
+                             action="#{gerenciadorEstatisticas.consultarFocosPorEstado()}" />
+        </h:form> 		
+       
+        <h:dataTable value="#{gerenciadorEstatisticas.focos}" var="foco">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Estado" />                   
+                </f:facet>
+                <h:outputText value="#{foco.estado}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Município" />                   
+                </f:facet>
+                <h:outputText value="#{foco.municipio}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Quantidade de focos de queimadas" />                   
+                </f:facet>
+                <h:outputText value="#{foco.qtdFocos}"/>
+            </h:column>
+        </h:dataTable> 
+    </h:body>
+</html>
+

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://sisam.cptec.inpe.br/sisam_webservice/services/TabulacaoWebService" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://sisam.cptec.inpe.br/sisam_webservice/services/TabulacaoWebService" xmlns:intf="http://sisam.cptec.inpe.br/sisam_webservice/services/TabulacaoWebService" xmlns:tns1="http://webservice.sisam.dsa.inpe.br" xmlns:tns2="urn:br.inpe.dsa.sisam.view" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://webservice.sisam.dsa.inpe.br" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="urn:br.inpe.dsa.sisam.view"/>
+   <element name="getDadosTabulados">
+    <complexType>
+     <sequence>
+      <element name="opc_data" type="xsd:string"/>
+      <element name="data_inicial" type="xsd:string"/>
+      <element name="data_final" type="xsd:string"/>
+      <element maxOccurs="unbounded" name="mes" type="xsd:string"/>
+      <element maxOccurs="unbounded" name="ano" type="xsd:string"/>
+      <element name="opc_estMun" type="xsd:string"/>
+      <element maxOccurs="unbounded" name="estado" type="xsd:string"/>
+      <element maxOccurs="unbounded" name="municipio" type="xsd:string"/>
+      <element maxOccurs="unbounded" name="vars" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getDadosTabuladosResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getDadosTabuladosReturn" type="tns2:VariaveisView"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="urn:br.inpe.dsa.sisam.view" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="VariaveisView">
+    <sequence>
+     <element name="aeros" nillable="true" type="xsd:double"/>
+     <element name="aeros_incert" nillable="true" type="xsd:double"/>
+     <element name="capital" nillable="true" type="xsd:string"/>
+     <element name="conc_co_max" nillable="true" type="xsd:double"/>
+     <element name="conc_co_med" nillable="true" type="xsd:double"/>
+     <element name="conc_co_min" nillable="true" type="xsd:double"/>
+     <element name="conc_pm_max" nillable="true" type="xsd:double"/>
+     <element name="conc_pm_med" nillable="true" type="xsd:double"/>
+     <element name="conc_pm_min" nillable="true" type="xsd:double"/>
+     <element name="data" nillable="true" type="xsd:dateTime"/>
+     <element name="dg_elet" nillable="true" type="xsd:double"/>
+     <element name="estado" nillable="true" type="xsd:string"/>
+     <element name="focoq" nillable="true" type="xsd:double"/>
+     <element name="geada" nillable="true" type="xsd:string"/>
+     <element name="geocodigo" nillable="true" type="xsd:string"/>
+     <element name="gid" nillable="true" type="xsd:long"/>
+     <element name="latitude" nillable="true" type="xsd:double"/>
+     <element name="longitude" nillable="true" type="xsd:double"/>
+     <element name="mesoregiao" nillable="true" type="xsd:string"/>
+     <element name="microregia" nillable="true" type="xsd:string"/>
+     <element name="nome" nillable="true" type="xsd:string"/>
+     <element name="ondas_calor_max" nillable="true" type="xsd:string"/>
+     <element name="ondas_calor_med" nillable="true" type="xsd:string"/>
+     <element name="ondas_calor_min" nillable="true" type="xsd:string"/>
+     <element name="prec_acum" nillable="true" type="xsd:double"/>
+     <element name="rad_uv" nillable="true" type="xsd:double"/>
+     <element name="regiao" nillable="true" type="xsd:string"/>
+     <element name="tempestade" nillable="true" type="xsd:string"/>
+     <element name="tmp_ar_max" nillable="true" type="xsd:double"/>
+     <element name="tmp_ar_med" nillable="true" type="xsd:double"/>
+     <element name="tmp_ar_min" nillable="true" type="xsd:double"/>
+     <element name="uf" nillable="true" type="xsd:string"/>
+     <element name="umid_ar_max" nillable="true" type="xsd:double"/>
+     <element name="umid_ar_med" nillable="true" type="xsd:double"/>
+     <element name="umid_ar_min" nillable="true" type="xsd:double"/>
+     <element name="vento_dir" nillable="true" type="xsd:string"/>
+     <element name="vento_vel" nillable="true" type="xsd:double"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getDadosTabuladosResponse">
+
+      <wsdl:part element="tns1:getDadosTabuladosResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getDadosTabuladosRequest">
+
+      <wsdl:part element="tns1:getDadosTabulados" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="TabulacaoService">
+
+      <wsdl:operation name="getDadosTabulados">
+
+         <wsdl:input message="impl:getDadosTabuladosRequest" name="getDadosTabuladosRequest"/>
+
+         <wsdl:output message="impl:getDadosTabuladosResponse" name="getDadosTabuladosResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="TabulacaoWebServiceSoapBinding" type="impl:TabulacaoService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getDadosTabulados">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getDadosTabuladosRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getDadosTabuladosResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="TabulacaoServiceService">
+
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Resultado da pesquisa, retorna os dados em forma tabulada  </wsdl:documentation>
+
+      <wsdl:port binding="impl:TabulacaoWebServiceSoapBinding" name="TabulacaoWebService">
+
+         <wsdlsoap:address location="http://sisam.cptec.inpe.br/sisam_webservice/services/TabulacaoWebService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

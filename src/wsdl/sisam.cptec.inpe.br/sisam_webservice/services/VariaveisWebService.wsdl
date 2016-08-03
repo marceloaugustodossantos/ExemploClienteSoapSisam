@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://sisam.cptec.inpe.br/sisam_webservice/services/VariaveisWebService" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://sisam.cptec.inpe.br/sisam_webservice/services/VariaveisWebService" xmlns:intf="http://sisam.cptec.inpe.br/sisam_webservice/services/VariaveisWebService" xmlns:tns1="http://webservice.sisam.dsa.inpe.br" xmlns:tns2="urn:br.inpe.dsa.sisam.view" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://webservice.sisam.dsa.inpe.br" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="urn:br.inpe.dsa.sisam.view"/>
+   <element name="getListaVariaveis">
+    <complexType/>
+   </element>
+   <element name="getListaVariaveisResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getListaVariaveisReturn" type="tns2:VarWebServiceView"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getListaVariaveisDesc">
+    <complexType/>
+   </element>
+   <element name="getListaVariaveisDescResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getListaVariaveisDescReturn" type="tns2:VarDescWebServiceView"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="urn:br.inpe.dsa.sisam.view" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="VarWebServiceView">
+    <sequence>
+     <element name="nome" nillable="true" type="xsd:string"/>
+     <element name="nome_banco" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="VarDescWebServiceView">
+    <sequence>
+     <element name="altitude_nivel" nillable="true" type="xsd:string"/>
+     <element name="medida" nillable="true" type="xsd:string"/>
+     <element name="nome" nillable="true" type="xsd:string"/>
+     <element name="nome_banco" nillable="true" type="xsd:string"/>
+     <element name="origem" nillable="true" type="xsd:string"/>
+     <element name="periodicidade" nillable="true" type="xsd:string"/>
+     <element name="resolucao" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getListaVariaveisDescRequest">
+
+      <wsdl:part element="tns1:getListaVariaveisDesc" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getListaVariaveisRequest">
+
+      <wsdl:part element="tns1:getListaVariaveis" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getListaVariaveisDescResponse">
+
+      <wsdl:part element="tns1:getListaVariaveisDescResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getListaVariaveisResponse">
+
+      <wsdl:part element="tns1:getListaVariaveisResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="VariaveisService">
+
+      <wsdl:operation name="getListaVariaveis">
+
+         <wsdl:input message="impl:getListaVariaveisRequest" name="getListaVariaveisRequest"/>
+
+         <wsdl:output message="impl:getListaVariaveisResponse" name="getListaVariaveisResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getListaVariaveisDesc">
+
+         <wsdl:input message="impl:getListaVariaveisDescRequest" name="getListaVariaveisDescRequest"/>
+
+         <wsdl:output message="impl:getListaVariaveisDescResponse" name="getListaVariaveisDescResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="VariaveisWebServiceSoapBinding" type="impl:VariaveisService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getListaVariaveis">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getListaVariaveisRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getListaVariaveisResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getListaVariaveisDesc">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getListaVariaveisDescRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getListaVariaveisDescResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="VariaveisServiceService">
+
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Lista variaveis  </wsdl:documentation>
+
+      <wsdl:port binding="impl:VariaveisWebServiceSoapBinding" name="VariaveisWebService">
+
+         <wsdlsoap:address location="http://sisam.cptec.inpe.br/sisam_webservice/services/VariaveisWebService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
